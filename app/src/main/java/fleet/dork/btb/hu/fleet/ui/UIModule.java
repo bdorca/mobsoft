@@ -45,7 +45,7 @@ public class UIModule {
 
     @Provides
     @Singleton
-    public MapPresenter provideMapPresenter() {
+    public MapPresenter provideMapPresenter(){
         return new MapPresenter();
     }
 
