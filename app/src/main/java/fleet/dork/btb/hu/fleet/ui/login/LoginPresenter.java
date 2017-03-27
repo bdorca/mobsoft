@@ -13,13 +13,4 @@ public class LoginPresenter extends Presenter<LoginScreen> {
     public void login(final String username, final String password) {
     }
 
-    @Override
-    public void attachScreen(LoginScreen screen) {
-        super.attachScreen(screen);
-    }
-
-    @Override
-    public void detachScreen() {
-        super.detachScreen();
-    }
 }

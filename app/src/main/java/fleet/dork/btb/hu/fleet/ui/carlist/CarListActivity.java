@@ -1,4 +1,4 @@
-package fleet.dork.btb.hu.fleet.ui.main;
+package fleet.dork.btb.hu.fleet.ui.carlist;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import fleet.dork.btb.hu.fleet.R;
 
 import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
 
-public class MainActivity extends AppCompatActivity implements MainScreen {
+public class CarListActivity extends AppCompatActivity implements CarListScreen {
 
     @Inject
-    MainPresenter mainPresenter;
+    CarListPresenter carListPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     protected void onStart() {
         super.onStart();
-        mainPresenter.attachScreen(this);
+        carListPresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mainPresenter.detachScreen();
+        carListPresenter.detachScreen();
     }
 
     @Override

@@ -7,15 +7,6 @@ import fleet.dork.btb.hu.fleet.ui.Presenter;
  */
 
 public class DetailsPresenter extends Presenter<DetailsScreen> {
-    @Override
-    public void attachScreen(DetailsScreen screen) {
-        super.attachScreen(screen);
-    }
-
-    @Override
-    public void detachScreen() {
-        super.detachScreen();
-    }
 
     public void refreshData(){}
 

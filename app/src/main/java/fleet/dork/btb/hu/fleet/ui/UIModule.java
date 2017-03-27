@@ -8,7 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 import fleet.dork.btb.hu.fleet.ui.details.DetailsPresenter;
 import fleet.dork.btb.hu.fleet.ui.login.LoginPresenter;
-import fleet.dork.btb.hu.fleet.ui.main.MainPresenter;
+import fleet.dork.btb.hu.fleet.ui.carlist.CarListPresenter;
 
 @Module
 public class UIModule {
@@ -25,8 +25,8 @@ public class UIModule {
 
     @Provides
     @Singleton
-    public MainPresenter provideMainPresenter() {
-        return new MainPresenter();
+    public CarListPresenter provideMainPresenter() {
+        return new CarListPresenter();
     }
 
 

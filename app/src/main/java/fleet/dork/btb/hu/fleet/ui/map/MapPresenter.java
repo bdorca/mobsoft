@@ -10,13 +10,4 @@ public class MapPresenter extends Presenter<MapScreen> {
     public MapPresenter() {
     }
 
-    @Override
-    public void attachScreen(MapScreen screen) {
-        super.attachScreen(screen);
-    }
-
-    @Override
-    public void detachScreen() {
-        super.detachScreen();
-    }
 }
