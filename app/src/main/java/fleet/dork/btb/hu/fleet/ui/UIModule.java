@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import fleet.dork.btb.hu.fleet.ui.login.LoginPresenter;
 import fleet.dork.btb.hu.fleet.ui.main.MainPresenter;
 
 @Module
@@ -25,6 +26,13 @@ public class UIModule {
     @Singleton
     public MainPresenter provideMainPresenter() {
         return new MainPresenter();
+    }
+
+
+    @Provides
+    @Singleton
+    public LoginPresenter provideLoginPresenter() {
+        return new LoginPresenter();
     }
 
 }
