@@ -1,5 +1,13 @@
 package fleet.dork.btb.hu.fleet.ui;
 
+import android.content.Context;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+import fleet.dork.btb.hu.fleet.ui.main.MainPresenter;
+
 @Module
 public class UIModule {
     private Context context;
