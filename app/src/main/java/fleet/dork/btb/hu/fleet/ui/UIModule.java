@@ -9,6 +9,7 @@ import dagger.Provides;
 import fleet.dork.btb.hu.fleet.ui.details.DetailsPresenter;
 import fleet.dork.btb.hu.fleet.ui.login.LoginPresenter;
 import fleet.dork.btb.hu.fleet.ui.carlist.CarListPresenter;
+import fleet.dork.btb.hu.fleet.ui.map.MapPresenter;
 
 @Module
 public class UIModule {
@@ -40,6 +41,12 @@ public class UIModule {
     @Singleton
     public DetailsPresenter provideDetailsPresenter() {
         return new DetailsPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public MapPresenter provideMapPresenter(){
+        return new MapPresenter();
     }
 
 }
