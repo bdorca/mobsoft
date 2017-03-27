@@ -8,15 +8,18 @@ import javax.inject.Inject;
 
 import fleet.dork.btb.hu.fleet.R;
 
+import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
+
 public class MainActivity extends AppCompatActivity implements MainScreen {
 
     @Inject
-    LoginPresenter mainPresenter;
+    MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        injector.inject(this);
     }
 
     @Override

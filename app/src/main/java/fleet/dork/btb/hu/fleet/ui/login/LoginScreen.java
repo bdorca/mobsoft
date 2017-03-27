@@ -5,4 +5,6 @@ package fleet.dork.btb.hu.fleet.ui.login;
  */
 
 public interface LoginScreen {
+    void navigateToMain();
+    void showLoginFailure();
 }
