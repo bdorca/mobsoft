@@ -9,9 +9,12 @@ import com.orm.dsl.Table;
 @Table
 public class Car {
     private Long id;
+    private int carId;
     private String licence;
     private String type;
     private Coordinate location;
+    private int gasStatus;
+    private Status status;
 
     public Car() {
     }
@@ -20,6 +23,25 @@ public class Car {
         this.licence = licence;
         this.type = type;
         this.location = location;
+    }
+
+    public Car(int carId, String licence, String type, Coordinate location, int gasStatus, Status status) {
+        this.carId = carId;
+        this.licence = licence;
+        this.type = type;
+        this.location = location;
+        this.gasStatus = gasStatus;
+        this.status = status;
+    }
+
+    public Car(Long id, int carId, String licence, String type, Coordinate location, int gasStatus, Status status) {
+        this.id=id;
+        this.carId = carId;
+        this.licence = licence;
+        this.type = type;
+        this.location = location;
+        this.gasStatus = gasStatus;
+        this.status = status;
     }
 
     public Long getId() {
@@ -52,5 +74,33 @@ public class Car {
 
     public void setLocation(Coordinate location) {
         this.location = location;
+    }
+
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
+
+    public int getGasStatus() {
+        return gasStatus;
+    }
+
+    public void setGasStatus(int gasStatus) {
+        this.gasStatus = gasStatus;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public enum Status {
+        STOPPED, RUNNING, TURNED_OFF
     }
 }

@@ -1,6 +1,9 @@
 package fleet.dork.btb.hu.fleet.model;
 
+import com.orm.SugarRecord;
 import com.orm.dsl.Table;
+
+import java.util.List;
 
 /**
  * Created by mobsoft on 2017. 04. 10..
@@ -42,5 +45,9 @@ public class Coordinate {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public List<Car> getCars() {
+        return SugarRecord.find(Car.class, "coordinate = ?", String.valueOf(id));
     }
 }

@@ -51,7 +51,8 @@ paths:
           in: path
           description: ID of car
           required: true
-          type: string
+          type: number
+          format: int
       responses:
         200:
           description: car response
@@ -76,11 +77,11 @@ paths:
           schema:
             $ref: "#/definitions/Login"
       responses:
-        200: 
+        200:
           description: Logged in.
-        403: 
+        403:
           description: Not logged in.
-          
+
   /coordinates:
     get:
       parameters:
@@ -110,6 +111,11 @@ paths:
           in: query
           required: true
           type: string
+        - name: id
+          in: query
+          required: true
+          type: number
+          format: int
       responses:
         200:
           description: Command sent.
@@ -119,6 +125,9 @@ definitions:
   Car:
     type: object
     properties:
+      carId:
+        type: number
+        format: int
       licence:
         type: string
         description: Plate.
@@ -126,20 +135,24 @@ definitions:
         type: string
         description: Car type.
       gas_status:
-        type: int
+        type: number
+        format: int
         description: percent
       status:
-        type: boolean
+        type: string
+        enum: [stopped, running, turned_off]
       location:
         $ref: "#/definitions/Coordinate"
   Coordinate:
     type: object
     properties:
       latitude:
-        type: float
+        type: number
+        format: float
         description: latitude
       longitude:
-        type: float
+        type: number
+        format: float
         description: longitude
   Error:
     type: object

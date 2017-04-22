@@ -21,6 +21,7 @@ public interface Repository {
 
     void removeCar(Car car);
 
-    List<Car> getCarsByCoord(Coordinate coord);
+    List<Car> getCarsByCoord(Coordinate coord, float radius);
 
+    Car getCar(int id);
 }

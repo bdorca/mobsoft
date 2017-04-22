@@ -6,12 +6,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-
-import java.util.List;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import fleet.dork.btb.hu.fleet.R;
+import fleet.dork.btb.hu.fleet.model.Car;
 
 import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
 
@@ -41,7 +41,16 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
 
 
     @Override
-    public void setDetails(List<Integer> details) {
+    public void setDetails(Car details) {
 
     }
+
+    @Override
+    public void commandResponse(int a, String message){}
+
+    @Override
+    public void showMessage(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
 }

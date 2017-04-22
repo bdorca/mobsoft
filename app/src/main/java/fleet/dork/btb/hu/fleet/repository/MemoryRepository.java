@@ -20,9 +20,9 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        Car car1 = new Car("abc-123", "toyota", new Coordinate(45, 15));
-        Car car2 = new Car("def-456", "bmw", new Coordinate(45, 15.5f));
-        Car car3 = new Car("ghi-789", "skoda", new Coordinate(10, 15.5f));
+        Car car1 = new Car(Long.valueOf(1),1,"abc-123", "toyota", new Coordinate(45, 15),100,Car.Status.RUNNING);
+        Car car2 = new Car(Long.valueOf(2),2,"def-456", "bmw", new Coordinate(45, 15.5f),50,Car.Status.STOPPED);
+        Car car3 = new Car(Long.valueOf(3),3,"ghi-789", "skoda", new Coordinate(10, 15.5f),75, Car.Status.TURNED_OFF);
         cars=new ArrayList<>();
         cars.add(car1);
         cars.add(car2);
@@ -66,13 +66,24 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public List<Car> getCarsByCoord(Coordinate coord) {
+    public List<Car> getCarsByCoord(Coordinate coord, float radius) {
         List<Car> ret=new ArrayList<>();
         for(int i=0;i<cars.size();i++){
-            if(coord.getLatitude()==cars.get(i).getLocation().getLatitude()){
+            if(cars.get(i).getLocation().getLatitude()<=coord.getLatitude()+radius && cars.get(i).getLocation().getLatitude()>=coord.getLatitude()-radius &&
+                    cars.get(i).getLocation().getLongitude()<=coord.getLongitude()+radius && cars.get(i).getLocation().getLongitude()>=coord.getLongitude()-radius){
                 ret.add(cars.get(i));
             }
         }
         return ret;
+    }
+
+    @Override
+    public Car getCar(int id) {
+        for(int i=0;i<cars.size();i++){
+            if(cars.get(i).getCarId()==id){
+                return cars.get(i);
+            }
+        }
+        return null;
     }
 }

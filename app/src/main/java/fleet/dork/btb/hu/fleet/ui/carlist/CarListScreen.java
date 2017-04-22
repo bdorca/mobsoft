@@ -1,5 +1,6 @@
 package fleet.dork.btb.hu.fleet.ui.carlist;
 
-public interface CarListScreen {
-    void showMessage(String text);
+import fleet.dork.btb.hu.fleet.ui.Screen;
+
+public interface CarListScreen extends Screen{
 }

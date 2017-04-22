@@ -14,6 +14,12 @@ public class FleetApplication extends Application {
 	@Inject
 	Repository repository;
 
+    public void setInjector(FleetApplicationComponent appComponent) {
+        injector = appComponent;
+        injector.inject(this);
+        repository.open(getApplicationContext());
+    }
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
