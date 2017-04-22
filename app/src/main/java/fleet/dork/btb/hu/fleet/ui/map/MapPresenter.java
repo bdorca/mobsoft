@@ -29,7 +29,7 @@ public class MapPresenter extends Presenter<MapScreen> {
     @Inject
     MapInteractor interactor;
     @Inject
-    private Executor executor;
+    Executor executor;
 
 
     public MapPresenter() {

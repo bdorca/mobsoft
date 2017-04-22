@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import fleet.dork.btb.hu.fleet.interactor.auth.AuthInteractor;
 import fleet.dork.btb.hu.fleet.interactor.car.CarInteractor;
 import fleet.dork.btb.hu.fleet.interactor.map.MapInteractor;
 
@@ -19,4 +20,7 @@ public class InteractorModule {
     public MapInteractor provideMapInteractor(){
         return new MapInteractor();
     }
+
+    @Provides
+    public AuthInteractor provideAuthInteractor(){ return new AuthInteractor();}
 }

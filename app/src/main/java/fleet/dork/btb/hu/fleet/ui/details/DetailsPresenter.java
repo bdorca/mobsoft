@@ -29,7 +29,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
     EventBus bus;
 
     @Inject
-    private Executor executor;
+    Executor executor;
 
     private Car currentCar;
 

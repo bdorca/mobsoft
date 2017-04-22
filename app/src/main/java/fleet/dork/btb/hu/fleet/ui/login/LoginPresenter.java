@@ -25,7 +25,7 @@ public class LoginPresenter extends Presenter<LoginScreen> {
     @Inject
     AuthInteractor interactor;
     @Inject
-    private Executor executor;
+    Executor executor;
 
     public LoginPresenter() {
     }
