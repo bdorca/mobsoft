@@ -11,6 +11,8 @@ import fleet.dork.btb.hu.fleet.model.Coordinate;
 import fleet.dork.btb.hu.fleet.network.api.CarApi;
 import fleet.dork.btb.hu.fleet.repository.Repository;
 
+import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
+
 /**
  * Created by Dorka on 2017.04.22..
  */
@@ -26,6 +28,8 @@ public class MapInteractor {
     CarApi api;
 
     public MapInteractor() {
+        injector.inject(this);
+
     }
 
 

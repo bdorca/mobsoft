@@ -10,6 +10,8 @@ import fleet.dork.btb.hu.fleet.network.model.Login;
 import retrofit2.Call;
 import retrofit2.Response;
 
+import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
+
 /**
  * Created by Dorka on 2017.04.22..
  */
@@ -23,6 +25,7 @@ public class AuthInteractor {
     LoginApi api;
 
     public AuthInteractor() {
+        injector.inject(this);
     }
 
     public void login(String username, String password){
