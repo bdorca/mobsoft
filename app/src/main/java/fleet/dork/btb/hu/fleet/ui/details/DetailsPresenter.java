@@ -91,7 +91,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
             }
             Log.e("Networking", "Error reading command", event.getThrowable());
         } else {
-            screen.commandResponse(event.getResponse(), event.getMessage());
+            screen.commandResponse(event.getResponse());
         }
 
     }

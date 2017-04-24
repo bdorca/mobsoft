@@ -9,8 +9,20 @@ import java.util.Objects;
 @Table
 public class Car   {
 
+    private Long id;
+
+    public Car(Long id, int carId, String licence, String type, Coordinate location, int gasStatus, StatusEnum status) {
+        this.id = id;
+        this.carId = carId;
+        this.licence = licence;
+        this.type = type;
+        this.gasStatus = gasStatus;
+        this.status = status;
+        this.location = location;
+    }
+
     @SerializedName("carId")
-    private Integer carId = null;
+    private int carId = 0;
 
     @SerializedName("licence")
     private String licence = null;
@@ -19,7 +31,8 @@ public class Car   {
     private String type = null;
 
     @SerializedName("gas_status")
-    private Integer gasStatus = null;
+    private int gasStatus = 0;
+
 
 
     public enum StatusEnum {
@@ -54,10 +67,10 @@ public class Car   {
 
     /**
      **/
-    public Integer getCarId() {
+    public int getCarId() {
         return carId;
     }
-    public void setCarId(Integer carId) {
+    public void setCarId(int carId) {
         this.carId = carId;
     }
 
@@ -87,10 +100,10 @@ public class Car   {
     /**
      * percent
      **/
-    public Integer getGasStatus() {
+    public int getGasStatus() {
         return gasStatus;
     }
-    public void setGasStatus(Integer gasStatus) {
+    public void setGasStatus(int gasStatus) {
         this.gasStatus = gasStatus;
     }
 

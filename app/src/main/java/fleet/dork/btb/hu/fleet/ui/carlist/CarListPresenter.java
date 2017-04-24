@@ -2,12 +2,11 @@ package fleet.dork.btb.hu.fleet.ui.carlist;
 
 import android.util.Log;
 
-import de.greenrobot.event.EventBus;
-
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
+import de.greenrobot.event.EventBus;
 import fleet.dork.btb.hu.fleet.interactor.car.CarInteractor;
 import fleet.dork.btb.hu.fleet.interactor.car.event.GetCarsEvent;
 import fleet.dork.btb.hu.fleet.model.Car;
@@ -51,7 +50,7 @@ public class CarListPresenter extends Presenter<CarListScreen> {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                interactor.getCars();
+                interactor.getCars(20);
             }
         });
     }

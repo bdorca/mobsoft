@@ -8,6 +8,7 @@ public class BaseEvent {
 
     Throwable throwable;
 
+
     public BaseEvent() {
     }
 
@@ -18,4 +19,5 @@ public class BaseEvent {
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
     }
+
 }

@@ -1,14 +1,15 @@
 package fleet.dork.btb.hu.fleet.interactor.map;
 
-import de.greenrobot.event.EventBus;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import de.greenrobot.event.EventBus;
 import fleet.dork.btb.hu.fleet.interactor.map.event.CoordinateCarsEvent;
+import fleet.dork.btb.hu.fleet.model.Car;
 import fleet.dork.btb.hu.fleet.model.Coordinate;
+import fleet.dork.btb.hu.fleet.network.api.CarApi;
 import fleet.dork.btb.hu.fleet.repository.Repository;
-
-import static android.R.attr.radius;
 
 /**
  * Created by Dorka on 2017.04.22..
@@ -21,6 +22,9 @@ public class MapInteractor {
     @Inject
     Repository repo;
 
+    @Inject
+    CarApi api;
+
     public MapInteractor() {
     }
 
@@ -28,11 +32,12 @@ public class MapInteractor {
     public void getCarsAroundCoordinate(Coordinate coordinate, float radius ){
         CoordinateCarsEvent event=new CoordinateCarsEvent();
         try{
-            repo.getCarsByCoord(coordinate, radius);
+            List<Car> cars=repo.getCarsByCoord(coordinate, radius);
+            event.setCars(cars);
+            bus.post(event);
         }catch (Exception e){
             event.setThrowable(e);
             bus.post(event);
         }
     }
-
 }

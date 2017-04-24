@@ -1,17 +1,20 @@
 package fleet.dork.btb.hu.fleet.interactor.car;
 
-import de.greenrobot.event.EventBus;
-
 import java.util.List;
 
 import javax.inject.Inject;
 
+import de.greenrobot.event.EventBus;
+import fleet.dork.btb.hu.fleet.exception.UnexpectedErrorException;
 import fleet.dork.btb.hu.fleet.interactor.car.event.GetCarEvent;
 import fleet.dork.btb.hu.fleet.interactor.car.event.GetCarsEvent;
 import fleet.dork.btb.hu.fleet.interactor.car.event.SendCommandEvent;
 import fleet.dork.btb.hu.fleet.model.Car;
 import fleet.dork.btb.hu.fleet.model.Command;
+import fleet.dork.btb.hu.fleet.network.api.CarApi;
 import fleet.dork.btb.hu.fleet.repository.Repository;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
 
@@ -27,14 +30,24 @@ public class CarInteractor {
     @Inject
     Repository repo;
 
+    @Inject
+    CarApi api;
+
     public CarInteractor() {
         injector.inject(this);
     }
 
-    public void getCars(){
+    public void getCars(int size){
         GetCarsEvent event=new GetCarsEvent();
+        Call<List<Car>> call=api.carsGet(size);
         try {
-            List<Car> cars= repo.getAllCars();
+            Response<List<Car>> response=call.execute();
+            if(!response.isSuccess()){
+                throw new UnexpectedErrorException();
+            }
+            List<Car> cars =response.body();
+            repo.updateCars(cars);
+            //List<Car> cars= repo.getAllCars();
             event.setCars(cars);
             bus.post(event);
         } catch (Exception e) {
@@ -56,11 +69,30 @@ public class CarInteractor {
         }
     }
 
+    public void refreshCar(int id){
+        GetCarEvent event=new GetCarEvent();
+        Call<Car> call=api.carsCarIdGet(id);
+        try{
+            Response<Car> response=call.execute();
+            if(!response.isSuccess()){
+                throw new UnexpectedErrorException();
+            }
+            Car c=response.body();
+            repo.saveCar(c);
+            event.setCar(c);
+            bus.post(event);
+        }catch (Exception e){
+            event.setThrowable(e);
+            bus.post(event);
+        }
+    }
+
     public void sendCommand(Command command, int id){
         SendCommandEvent event=new SendCommandEvent();
+        Call<Void> call=api.carsCarIdCommandGet(command.toString(),id);
         try{
-            event.setMessage("");
-            event.setResponse(0);
+            Response<Void> response=call.execute();
+            event.setResponse(response.code());
             bus.post(event);
         }catch(Exception e){
             event.setThrowable(e);

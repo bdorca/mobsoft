@@ -41,15 +41,22 @@ public class SugarORMRepository implements Repository {
 
     @Override
     public void updateCars(List<Car> cars) {
-        for(Car c:cars){
-            for(Car x: getAllCars()){
-                if(c.getCarId()==x.getCarId()){
+        for (Car c : cars) {
+            boolean saved = false;
+            for (Car x : getAllCars()) {
+                if (c.getCarId() == x.getCarId()) {
                     x.setStatus(c.getStatus());
                     x.setGasStatus(c.getGasStatus());
                     x.setLocation(c.getLocation());
                     SugarRecord.saveInTx(x.getLocation());
                     SugarRecord.saveInTx(x);
+                    saved = true;
+                    break;
                 }
+            }
+            if (!saved) {
+                SugarRecord.saveInTx(c.getLocation());
+                SugarRecord.saveInTx(c);
             }
         }
     }
@@ -62,12 +69,12 @@ public class SugarORMRepository implements Repository {
 
     @Override
     public List<Car> getCarsByCoord(Coordinate coord, float radius) {
-        List<Coordinate> coords=SugarRecord.find(Coordinate.class, "latitude<= ? and latitude >= ? and longitude<= ? and longitude >= ?",
+        List<Coordinate> coords = SugarRecord.find(Coordinate.class, "latitude<= ? and latitude >= ? and longitude<= ? and longitude >= ?",
                 new String[]{String.valueOf(coord.getLatitude() + radius), String.valueOf(coord.getLatitude() - radius),
                         String.valueOf(coord.getLongitude() + radius), String.valueOf(coord.getLongitude() - radius)});
-        List<Car> cars=new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
 
-        for(Coordinate c: coords){
+        for (Coordinate c : coords) {
             cars.addAll(c.getCars());
         }
 
@@ -76,6 +83,6 @@ public class SugarORMRepository implements Repository {
 
     @Override
     public Car getCar(int id) {
-        return find(Car.class,"carId = ?",String.valueOf(id)).get(0);
+        return find(Car.class, "carId = ?", String.valueOf(id)).get(0);
     }
 }

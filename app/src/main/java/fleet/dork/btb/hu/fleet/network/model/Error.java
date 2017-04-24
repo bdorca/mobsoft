@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Error   {
   
   @SerializedName("code")
-  private Integer code = null;
+  private int code = 0;
   
   @SerializedName("message")
   private String message = null;
@@ -22,10 +22,10 @@ public class Error   {
   
   /**
    **/
-  public Integer getCode() {
+  public int getCode() {
     return code;
   }
-  public void setCode(Integer code) {
+  public void setCode(int code) {
     this.code = code;
   }
 

@@ -1,29 +1,37 @@
 package fleet.dork.btb.hu.fleet.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 
+import java.util.List;
 import java.util.Objects;
 
 
 @Table
 public class Coordinate   {
 
+    private Long id;
+
     @SerializedName("latitude")
-    private Float latitude = null;
+    private float latitude = 0;
 
     @SerializedName("longitude")
-    private Float longitude = null;
+    private float longitude = 0;
 
 
+    public Coordinate(float latitude, float longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
     /**
      * latitude
      **/
-    public Float getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
-    public void setLatitude(Float latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
@@ -31,10 +39,10 @@ public class Coordinate   {
     /**
      * longitude
      **/
-    public Float getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
-    public void setLongitude(Float longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 
@@ -79,4 +87,9 @@ public class Coordinate   {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    public List<Car> getCars() {
+        return SugarRecord.find(Car.class, "coordinate = ?", String.valueOf(id));
+    }
+
 }

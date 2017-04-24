@@ -12,5 +12,5 @@ import fleet.dork.btb.hu.fleet.ui.Screen;
 public interface DetailsScreen extends Screen {
     void setDetails(Car details);
 
-    void commandResponse(int a, String message);
+    void commandResponse(int a);
 }

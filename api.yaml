@@ -14,6 +14,7 @@ paths:
   /cars:
     # This is a HTTP operation
     get:
+      tags: [Car]
       # Describe this verb here. Note: you can use markdown
       description: |
         Gets `Car` objects.
@@ -44,8 +45,9 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /car:
+  /cars/{carId}:
     get:
+      tags: [Car]
       parameters:
         - name: carId
           in: path
@@ -64,6 +66,7 @@ paths:
             $ref: '#/definitions/Error'
   /login:
     post:
+      tags: [Login]
       consumes:
         - application/json
       produces:
@@ -82,37 +85,16 @@ paths:
         403:
           description: Not logged in.
 
-  /coordinates:
+  /cars/{carId}/command:
     get:
-      parameters:
-        - name: latitude
-          in: query
-          description: Latitude component of location.
-          required: true
-          type: number
-          format: double
-        - name: longitude
-          in: query
-          description: Longitude component of location.
-          required: true
-          type: number
-          format: double
-      responses:
-        200:
-          description: cars around that location.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Car'
-  /command:
-    get:
+      tags: [Car]
       parameters:
         - name: command
           in: query
           required: true
           type: string
-        - name: id
-          in: query
+        - name: carId
+          in: path
           required: true
           type: integer
           format: int32

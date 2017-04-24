@@ -20,9 +20,9 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        Car car1 = new Car(Long.valueOf(1),1,"abc-123", "toyota", new Coordinate(45, 15),100,Car.Status.RUNNING);
-        Car car2 = new Car(Long.valueOf(2),2,"def-456", "bmw", new Coordinate(45, 15.5f),50,Car.Status.STOPPED);
-        Car car3 = new Car(Long.valueOf(3),3,"ghi-789", "skoda", new Coordinate(10, 15.5f),75, Car.Status.TURNED_OFF);
+        Car car1 = new Car(Long.valueOf(1),1,"abc-123", "toyota", new Coordinate(45f, 15f),100,Car.StatusEnum.RUNNING);
+        Car car2 = new Car(Long.valueOf(2),2,"def-456", "bmw", new Coordinate(45f, 15.5f),50,Car.StatusEnum.STOPPED);
+        Car car3 = new Car(Long.valueOf(3),3,"ghi-789", "skoda", new Coordinate(10f, 15.5f),75, Car.StatusEnum.TURNED_OFF);
         cars=new ArrayList<>();
         cars.add(car1);
         cars.add(car2);

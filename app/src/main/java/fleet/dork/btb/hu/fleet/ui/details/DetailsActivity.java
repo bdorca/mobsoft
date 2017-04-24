@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import fleet.dork.btb.hu.fleet.R;
 import fleet.dork.btb.hu.fleet.model.Car;
 
@@ -20,14 +22,18 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
     @Inject
     DetailsPresenter detailsPresenter;
 
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        injector.inject(this);
+        ButterKnife.bind(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
                         .setAction("Action", null).show();
             }
         });
-        injector.inject(this);
+
     }
 
 
@@ -46,7 +52,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
     }
 
     @Override
-    public void commandResponse(int a, String message){}
+    public void commandResponse(int a){}
 
     @Override
     public void showMessage(String text) {
