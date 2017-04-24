@@ -26,7 +26,7 @@ paths:
           name: size
           in: query
           description: Size of array
-          required: true
+          required: false
           type: number
           format: double
       # Expected responses for this operation:
@@ -47,7 +47,7 @@ paths:
   /car:
     get:
       parameters:
-        - name: id
+        - name: carId
           in: path
           description: ID of car
           required: true
@@ -103,7 +103,7 @@ paths:
           schema:
             type: array
             items:
-              $refs: "#/definitions/Car"
+              $ref: '#/definitions/Car'
   /command:
     get:
       parameters:
