@@ -50,7 +50,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                interactor.getCar(currentCar.getCarId());
+                interactor.refreshCar(currentCar.getCarId());
             }
         });
 
@@ -75,7 +75,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showMessage("error");
+                screen.showMessage("error reading car");
             }
             Log.e("Networking", "Error reading car", event.getThrowable());
         } else {
@@ -87,7 +87,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showMessage("error");
+                screen.showMessage("error reading command");
             }
             Log.e("Networking", "Error reading command", event.getThrowable());
         } else {

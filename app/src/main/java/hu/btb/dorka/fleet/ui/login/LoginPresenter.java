@@ -56,7 +56,7 @@ public class LoginPresenter extends Presenter<LoginScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showMessage("error");
+//                screen.showMessage("login error");
                 screen.showLoginFailure();
             }
             Log.e("Networking", "Error reading command", event.getThrowable());

@@ -5,6 +5,7 @@ import android.app.Application;
 import javax.inject.Inject;
 
 import hu.btb.dorka.fleet.mock.MockNetworkModule;
+import hu.btb.dorka.fleet.mock.MockRepositoryModule;
 import hu.btb.dorka.fleet.network.NetworkModule;
 import hu.btb.dorka.fleet.repository.Repository;
 import hu.btb.dorka.fleet.ui.UIModule;
@@ -31,7 +32,7 @@ public class FleetApplication extends Application {
         //MockDebug + MockRelease
         //noinspection PointlessBooleanExpression
         if (BuildConfig.MOCK) {
-            injector = DaggerMockAppComponent.builder().uIModule(new UIModule(this)).mockNetworkModule(new MockNetworkModule()).build();
+            injector = DaggerMockAppComponent.builder().uIModule(new UIModule(this)).mockNetworkModule(new MockNetworkModule()).repositoryModule(new MockRepositoryModule()).build();
         } else {
             injector = DaggerAppComponent.builder().uIModule(new UIModule(this)).networkModule(new NetworkModule()).build();
         }

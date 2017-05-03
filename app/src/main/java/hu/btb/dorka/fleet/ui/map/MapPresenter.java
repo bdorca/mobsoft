@@ -59,9 +59,9 @@ public class MapPresenter extends Presenter<MapScreen> {
         if(event.getThrowable()!=null){
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showMessage("error");
+                screen.showMessage("error reading cars");
             }
-            Log.e("Networking", "Error reading command", event.getThrowable());
+            Log.e("Networking", "Error reading cars", event.getThrowable());
         }else{
             screen.refreshCoordinates(event.getCars());
         }

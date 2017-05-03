@@ -1,6 +1,5 @@
 package hu.btb.dorka.fleet.ui.carlist;
 
-import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import hu.btb.dorka.fleet.R;
 import hu.btb.dorka.fleet.model.Car;
 import hu.btb.dorka.fleet.util.UIUtils;
@@ -23,14 +24,17 @@ import hu.btb.dorka.fleet.util.UIUtils;
 public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.CarViewHolder> {
 
     private List<Car> cars;
-    private Context ctx;
 
+    private OnCarClickListener listener;
 
-    public CarListAdapter(List<Car> cars, Context ctx) {
+    public CarListAdapter(List<Car> cars, OnCarClickListener listener) {
         this.cars = cars;
-        this.ctx = ctx;
+        this.listener=listener;
     }
 
+    public interface OnCarClickListener {
+        void onCarClick(Car car);
+    }
 
     @Override
     public CarViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -39,9 +43,16 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.CarViewH
     }
 
     @Override
-    public void onBindViewHolder(CarViewHolder carViewHolder, int position) {
-        carViewHolder.licencePlate.setText(cars.get(position).getLicence());
-        carViewHolder.setStatus(cars.get(position).getStatus());
+    public void onBindViewHolder(CarViewHolder carViewHolder, final int position) {
+        final Car car = cars.get(position);
+        carViewHolder.licencePlate.setText(car.getLicence());
+        carViewHolder.setStatus(car.getStatus());
+        carViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onCarClick(car);
+            }
+        });
     }
 
 
@@ -52,15 +63,16 @@ public class CarListAdapter extends RecyclerView.Adapter<CarListAdapter.CarViewH
 
     public class CarViewHolder extends RecyclerView.ViewHolder {
 
+        @Bind(R.id.licenceViewHolderTextView)
         public TextView licencePlate;
+        @Bind(R.id.statusViewHolderImageView)
         public ImageView statusImageView;
+        @Bind(R.id.carCardView)
         CardView cardView;
 
-        public CarViewHolder(View itemView) {
-            super(itemView);
-            licencePlate = (TextView) itemView.findViewById(R.id.licenceViewHolderTextView);
-            statusImageView = (ImageView) itemView.findViewById(R.id.statusViewHolderImageView);
-            cardView=(CardView) itemView.findViewById(R.id.carCardView);
+        public CarViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
         }
 
         public void setStatus(Car.StatusEnum status){

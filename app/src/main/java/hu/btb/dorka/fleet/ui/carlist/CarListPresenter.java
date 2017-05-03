@@ -58,7 +58,7 @@ public class CarListPresenter extends Presenter<CarListScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showMessage("error");
+                screen.showMessage("error reading cars");
             }
             Log.e("Networking", "Error reading cars", event.getThrowable());
         } else {

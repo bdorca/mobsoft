@@ -4,11 +4,14 @@ import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 
+import org.parceler.Parcel;
+
 import java.util.List;
 import java.util.Objects;
 
 
 @Table
+@Parcel
 public class Coordinate   {
 
     private Long id;
@@ -19,6 +22,8 @@ public class Coordinate   {
     @SerializedName("longitude")
     private float longitude = 0;
 
+    public Coordinate() {
+    }
 
     public Coordinate(float latitude, float longitude) {
         this.latitude = latitude;

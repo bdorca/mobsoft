@@ -30,7 +30,12 @@ public class SugarORMRepository implements Repository {
 
     @Override
     public List<Car> getAllCars() {
-        return SugarRecord.listAll(Car.class);
+
+        try {
+            return SugarRecord.listAll(Car.class);
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     @Override
@@ -69,16 +74,17 @@ public class SugarORMRepository implements Repository {
 
     @Override
     public List<Car> getCarsByCoord(Coordinate coord, float radius) {
-        List<Coordinate> coords = SugarRecord.find(Coordinate.class, "latitude<= ? and latitude >= ? and longitude<= ? and longitude >= ?",
-                new String[]{String.valueOf(coord.getLatitude() + radius), String.valueOf(coord.getLatitude() - radius),
-                        String.valueOf(coord.getLongitude() + radius), String.valueOf(coord.getLongitude() - radius)});
-        List<Car> cars = new ArrayList<>();
-
-        for (Coordinate c : coords) {
-            cars.addAll(c.getCars());
-        }
-
-        return cars;
+//        List<Coordinate> coords = SugarRecord.find(Coordinate.class, "latitude<= ? and latitude >= ? and longitude<= ? and longitude >= ?",
+//                new String[]{String.valueOf(coord.getLatitude() + radius), String.valueOf(coord.getLatitude() - radius),
+//                        String.valueOf(coord.getLongitude() + radius), String.valueOf(coord.getLongitude() - radius)});
+//        List<Car> cars = new ArrayList<>();
+//
+//        for (Coordinate c : coords) {
+//            cars.addAll(c.getCars());
+//        }
+//
+//        return cars;
+        return getAllCars();
     }
 
     @Override

@@ -3,9 +3,11 @@ package hu.btb.dorka.fleet.model;
 import com.google.gson.annotations.SerializedName;
 import com.orm.dsl.Table;
 
+import org.parceler.Parcel;
+
 import java.util.Objects;
 
-
+@Parcel
 @Table
 public class Car   {
 
@@ -19,6 +21,9 @@ public class Car   {
         this.gasStatus = gasStatus;
         this.status = status;
         this.location = location;
+    }
+
+    public Car() {
     }
 
     @SerializedName("carId")

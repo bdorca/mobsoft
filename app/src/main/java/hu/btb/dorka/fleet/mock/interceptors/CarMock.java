@@ -44,7 +44,7 @@ public class CarMock {
 		} else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "cars") && request.method().equals("GET")) {
             MemoryRepository memoryRepository = new MemoryRepository();
             memoryRepository.open(null);
-            responseString = GsonHelper.getGson().toJson(memoryRepository.getCar(Integer.parseInt(uri.getPath().substring(uri.getPath().lastIndexOf("/")))));
+            responseString = GsonHelper.getGson().toJson(memoryRepository.getCar(Integer.parseInt(uri.getPath().substring(uri.getPath().lastIndexOf("/")+1))));
             responseCode = 200;
 		} else {
 			responseString = "ERROR";
