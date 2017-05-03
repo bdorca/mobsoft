@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+              xmlns:app="http://schemas.android.com/tools"
+              android:orientation="horizontal">
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/carCardView"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardElevation="4dp"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true"
+        >
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="match_parent"
+                      android:layout_marginTop="@dimen/car_card_padding"
+                      android:layout_marginBottom="@dimen/car_card_padding"
+                      android:layout_marginLeft="@dimen/car_card_padding"
+                      android:layout_marginRight="@dimen/car_card_padding"
+                      android:layout_height="match_parent"
+                      android:gravity="center_vertical"
+                      android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/licenceViewHolderTextView"
+                android:layout_height="wrap_content"
+                android:fontFamily="Roboto-Medium"
+                android:paddingBottom="@dimen/car_card_padding"
+                android:paddingTop="@dimen/car_card_padding"
+                android:text="AAA-111"
+                android:layout_gravity="start"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/statusViewHolderImageView"
+                android:layout_height="wrap_content"
+
+                android:paddingRight="@dimen/car_card_padding"
+                android:paddingTop="@dimen/car_card_padding"
+                app:srcCompat="@android:drawable/presence_online"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 </LinearLayout>

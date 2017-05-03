@@ -15,4 +15,5 @@
         completions."
     </string>
     <string name="title_activity_details">DetailsActivity</string>
+    <string name="gas_status">Gas Status</string>
 </resources>

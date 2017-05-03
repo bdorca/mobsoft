@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
     @Override
     public void navigateToMain() {
         Intent i=new Intent(this, CarListActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
-        finish();
     }
 
     @Override

@@ -7,11 +7,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import hu.aut.examples.szia.network.NetworkModule;
-import hu.aut.examples.szia.network.auth.AuthApi;
-import hu.aut.examples.szia.network.flights.FlightApi;
-import hu.aut.examples.szia.network.flights.NewsApi;
-import hu.aut.examples.szia.settings.Settings;
+import fleet.dork.btb.hu.fleet.network.NetworkModule;
+import fleet.dork.btb.hu.fleet.network.api.AuthApi;
+import fleet.dork.btb.hu.fleet.network.api.CarApi;
+import fleet.dork.btb.hu.fleet.settings.Settings;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -24,9 +23,9 @@ public class MockNetworkModule {
 
 	@Provides
 	@Singleton
-	public OkHttpClient.Builder provideOkHttpClientBuilder(final Settings settings) {
-		return networkModule.provideOkHttpClientBuilder(settings);
-	}
+    public OkHttpClient.Builder provideOkHttpClientBuilder(final Settings settings) {
+        return networkModule.provideOkHttpClientBuilder(settings);
+    }
 
 
 	@Provides
@@ -52,20 +51,15 @@ public class MockNetworkModule {
 
 	@Provides
 	@Singleton
-	public AuthApi provideAuthApi(Retrofit retrofit) {
-		return networkModule.provideAuthApi(retrofit);
+	public AuthApi provideLoginApi(Retrofit retrofit) {
+		return networkModule.provideLoginApi(retrofit);
 	}
 
 	@Provides
 	@Singleton
-	public FlightApi provideFlightApi(Retrofit retrofit) {
-		return networkModule.provideFlightApi(retrofit);
+	public CarApi provideCarApi(Retrofit retrofit) {
+		return networkModule.provideCarApi(retrofit);
 	}
 
-	@Provides
-	@Singleton
-	public NewsApi provideNews(Retrofit retrofit) {
-		return networkModule.provideNewsApi(retrofit);
-	}
 
 }

@@ -1,6 +1,6 @@
 package fleet.dork.btb.hu.fleet.mock;
 
-import hu.aut.examples.szia.mock.interceptors.MockInterceptor;
+import fleet.dork.btb.hu.fleet.mock.interceptors.MockInterceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 

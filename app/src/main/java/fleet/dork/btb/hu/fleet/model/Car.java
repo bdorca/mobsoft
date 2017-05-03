@@ -57,7 +57,7 @@ public class Car   {
         }
     }
 
-    @SerializedName("status")
+    @SerializedName("statusImageView")
     private StatusEnum status = null;
 
     @SerializedName("location")
@@ -161,7 +161,7 @@ public class Car   {
         sb.append("    licence: ").append(toIndentedString(licence)).append("\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    gasStatus: ").append(toIndentedString(gasStatus)).append("\n");
-        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    statusImageView: ").append(toIndentedString(status)).append("\n");
         sb.append("    location: ").append(toIndentedString(location)).append("\n");
         sb.append("}");
         return sb.toString();

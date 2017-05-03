@@ -4,9 +4,9 @@ import android.util.Log;
 
 import java.io.IOException;
 
-import hu.aut.examples.szia.model.Token;
-import hu.aut.examples.szia.network.auth.AuthApi;
-import hu.aut.examples.szia.settings.Settings;
+import fleet.dork.btb.hu.fleet.network.api.AuthApi;
+import fleet.dork.btb.hu.fleet.network.model.Token;
+import fleet.dork.btb.hu.fleet.settings.Settings;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

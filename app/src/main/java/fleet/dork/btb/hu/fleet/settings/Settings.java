@@ -3,8 +3,9 @@ package fleet.dork.btb.hu.fleet.settings;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import hu.aut.examples.szia.model.Token;
-import hu.aut.examples.szia.util.Store;
+import fleet.dork.btb.hu.fleet.network.model.Token;
+import fleet.dork.btb.hu.fleet.util.Store;
+
 
 @Singleton
 public class Settings {

@@ -2,16 +2,15 @@ package fleet.dork.btb.hu.fleet.mock.interceptors;
 
 import android.net.Uri;
 
-import hu.aut.examples.szia.network.NetworkConfig;
-import hu.aut.examples.szia.network.auth.AuthApi;
-import hu.aut.examples.szia.repository.MemoryRepository;
-import hu.aut.examples.szia.util.GsonHelper;
+import fleet.dork.btb.hu.fleet.network.NetworkConfig;
+import fleet.dork.btb.hu.fleet.network.api.AuthApi;
+import fleet.dork.btb.hu.fleet.repository.MemoryRepository;
+import fleet.dork.btb.hu.fleet.util.GsonHelper;
 import okhttp3.Headers;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import static fleet.dork.btb.hu.fleet.mock.interceptors.MockHelper.makeResponse;
-import static hu.aut.examples.szia.mock.interceptors.MockHelper.makeResponse;
 
 public class CarMock {
 	public static Response process(Request request) {
@@ -28,21 +27,25 @@ public class CarMock {
 			return makeResponse(request, headers, responseCode, responseString);
 		}
 
-		if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "Flights") && request.method().equals("GET")) {
+		if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "cars") && request.method().equals("GET")) {
 			MemoryRepository memoryRepository = new MemoryRepository();
 			memoryRepository.open(null);
-			responseString = GsonHelper.getGson().toJson(memoryRepository.getFavourites());
+			responseString = GsonHelper.getGson().toJson(memoryRepository.getAllCars());
 			responseCode = 200;
-		} else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "Flights/nextArrivals") && request.method().equals("GET")) {
-			MemoryRepository memoryRepository = new MemoryRepository();
-			memoryRepository.open(null);
-			responseString = GsonHelper.getGson().toJson(memoryRepository.getFavourites().subList(0, 2));
-			responseCode = 200;
-		} else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "Flights/nextDepartures") && request.method().equals("GET")) {
-			MemoryRepository memoryRepository = new MemoryRepository();
-			memoryRepository.open(null);
-			responseString = GsonHelper.getGson().toJson(memoryRepository.getFavourites().subList(2, 4));
-			responseCode = 200;
+		} else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "cars/command") && request.method().equals("GET")) {
+            MemoryRepository memoryRepository = new MemoryRepository();
+            memoryRepository.open(null);
+            if(memoryRepository.getCar(Integer.parseInt(uri.getPath().substring(uri.getPath().lastIndexOf("/"))))!=null){
+                responseCode = 200;
+            }else {
+                responseCode = 400;
+            }
+            responseString="";
+		} else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "cars") && request.method().equals("GET")) {
+            MemoryRepository memoryRepository = new MemoryRepository();
+            memoryRepository.open(null);
+            responseString = GsonHelper.getGson().toJson(memoryRepository.getCar(Integer.parseInt(uri.getPath().substring(uri.getPath().lastIndexOf("/")))));
+            responseCode = 200;
 		} else {
 			responseString = "ERROR";
 			responseCode = 503;

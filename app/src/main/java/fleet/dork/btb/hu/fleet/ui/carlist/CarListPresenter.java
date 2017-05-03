@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import de.greenrobot.event.EventBus;
 import fleet.dork.btb.hu.fleet.interactor.car.CarInteractor;
 import fleet.dork.btb.hu.fleet.interactor.car.event.GetCarsEvent;
-import fleet.dork.btb.hu.fleet.model.Car;
 import fleet.dork.btb.hu.fleet.ui.Presenter;
 
 import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
@@ -64,9 +63,7 @@ public class CarListPresenter extends Presenter<CarListScreen> {
             Log.e("Networking", "Error reading cars", event.getThrowable());
         } else {
             if (screen != null) {
-                for(Car c : event.getCars()){
-                    screen.showMessage(c.getLicence());
-                }
+                screen.refreshCars(event.getCars());
             }
         }
     }

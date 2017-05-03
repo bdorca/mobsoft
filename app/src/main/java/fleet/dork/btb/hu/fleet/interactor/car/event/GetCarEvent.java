@@ -1,12 +1,12 @@
 package fleet.dork.btb.hu.fleet.interactor.car.event;
 
-import fleet.dork.btb.hu.fleet.interactor.BaseEvent;
 import fleet.dork.btb.hu.fleet.model.Car;
+import fleet.dork.btb.hu.fleet.util.NetworkEvent;
 
 /**
  * Created by Dorka on 2017.04.22..
  */
-public class GetCarEvent extends BaseEvent{
+public class GetCarEvent extends NetworkEvent {
 
     private Car car;
 

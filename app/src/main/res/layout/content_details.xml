@@ -13,4 +13,58 @@
     tools:context="fleet.dork.btb.hu.fleet.ui.details.DetailsActivity"
     tools:showIn="@layout/activity_details">
 
+    <TextView
+        android:text="Plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/plateTextView"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"/>
+
+    <TextView
+        android:text="Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plateTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp"
+        android:id="@+id/typeTextView"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typeTextView"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="19dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gas_status"/>
+
+        <ProgressBar
+            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gasStatusBar"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="50"
+            android:indeterminate="false"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@android:drawable/presence_online"
+        android:layout_toEndOf="@+id/plateTextView"
+        android:layout_alignTop="@id/plateTextView"
+        android:id="@+id/statusImageView"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:layout_marginLeft="20dp"/>
+
 </RelativeLayout>

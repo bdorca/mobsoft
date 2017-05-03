@@ -64,6 +64,24 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+  /cars/command/{carId}:
+    get:
+      tags: [Car]
+      parameters:
+        - name: command
+          in: query
+          required: true
+          type: string
+        - name: carId
+          in: path
+          required: true
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: Command sent.
+        403:
+          description: Not Authorized.
   /login:
     post:
       tags: [Login]
@@ -85,24 +103,6 @@ paths:
         403:
           description: Not logged in.
 
-  /cars/{carId}/command:
-    get:
-      tags: [Car]
-      parameters:
-        - name: command
-          in: query
-          required: true
-          type: string
-        - name: carId
-          in: path
-          required: true
-          type: integer
-          format: int32
-      responses:
-        200:
-          description: Command sent.
-        403:
-          description: Not Authorized.
 definitions:
   Car:
     type: object

@@ -1,29 +1,51 @@
 package fleet.dork.btb.hu.fleet.ui.details;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import fleet.dork.btb.hu.fleet.R;
 import fleet.dork.btb.hu.fleet.model.Car;
+import fleet.dork.btb.hu.fleet.ui.map.MapActivity;
+import fleet.dork.btb.hu.fleet.util.UIUtils;
 
 import static fleet.dork.btb.hu.fleet.FleetApplication.injector;
 
 public class DetailsActivity extends AppCompatActivity implements DetailsScreen {
 
     @Inject
-    DetailsPresenter detailsPresenter;
+    public DetailsPresenter detailsPresenter;
 
     @Bind(R.id.fab)
-    FloatingActionButton fab;
+    public FloatingActionButton fab;
+
+    @Bind(R.id.plateTextView)
+    public TextView plateTextView;
+
+    @Bind(R.id.typeTextView)
+    public TextView typeTextView;
+
+    @Bind(R.id.gasStatusBar)
+    public ProgressBar gasStatusBar;
+
+    @Bind(R.id.statusImageView)
+    public ImageView statusImageView;
+
+
+    private Car details;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +63,29 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
                         .setAction("Action", null).show();
             }
         });
-
+        detailsPresenter.refreshData();
     }
 
-
+    @OnClick(R.id.toMapButton)
+    public void toMap(){
+        Intent i=new Intent(this, MapActivity.class);
+        i.putExtra("latitude",details.getLocation().getLatitude());
+        i.putExtra("longitude",details.getLocation().getLongitude());
+        startActivity(i);
+    }
 
     @Override
     public void setDetails(Car details) {
-
+        this.details=details;
+        plateTextView.setText(details.getLicence());
+        typeTextView.setText(details.getType());
+        gasStatusBar.setProgress(details.getGasStatus());
+        UIUtils.setStatusImageView(statusImageView,details.getStatus());
     }
 
     @Override
-    public void commandResponse(int a){}
+    public void commandResponse(int a) {
+    }
 
     @Override
     public void showMessage(String text) {
