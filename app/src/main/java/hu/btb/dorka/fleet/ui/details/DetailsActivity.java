@@ -85,6 +85,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsScreen 
 
     @Override
     public void commandResponse(int a) {
+        Toast.makeText(this,"Command response: "+a,Toast.LENGTH_SHORT).show();
     }
 
     @Override

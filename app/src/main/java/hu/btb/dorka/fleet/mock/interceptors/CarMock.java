@@ -35,7 +35,7 @@ public class CarMock {
 		} else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "cars/command") && request.method().equals("GET")) {
             MemoryRepository memoryRepository = new MemoryRepository();
             memoryRepository.open(null);
-            if(memoryRepository.getCar(Integer.parseInt(uri.getPath().substring(uri.getPath().lastIndexOf("/"))))!=null){
+            if(memoryRepository.getCar(Integer.parseInt(uri.getPath().substring(uri.getPath().lastIndexOf("/")+1)))!=null){
                 responseCode = 200;
             }else {
                 responseCode = 400;

@@ -89,7 +89,7 @@ public class CarInteractor {
 
     public void sendCommand(Command command, int id){
         SendCommandEvent event=new SendCommandEvent();
-        Call<Void> call=api.carsCarIdCommandGet(command.toString(),id);
+        Call<Void> call=api.carsCarIdCommandGet(id,command.toString());
         try{
             Response<Void> response=call.execute();
             event.setResponse(response.code());

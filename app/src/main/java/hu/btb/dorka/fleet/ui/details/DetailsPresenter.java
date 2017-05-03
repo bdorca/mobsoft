@@ -58,6 +58,7 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
 
     public void setCurrentCar(Car c){
         currentCar=c;
+        screen.setDetails(c);
     }
 
     public void sendCommand(final Command c){
@@ -79,7 +80,6 @@ public class DetailsPresenter extends Presenter<DetailsScreen> {
             Log.e("Networking", "Error reading car", event.getThrowable());
         } else {
             setCurrentCar(event.getCar());
-            screen.setDetails(currentCar);
         }
     }
 

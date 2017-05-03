@@ -21,7 +21,7 @@ import hu.btb.dorka.fleet.ui.map.MapPresenter;
 
 @Singleton
 @Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, NetworkModule.class})
-public interface FleetApplicationComponent {
+public interface AppComponent {
     void inject(CarListActivity carListActivity);
     void inject(LoginActivity loginActivity);
     void inject(DetailsActivity detailsActivity);

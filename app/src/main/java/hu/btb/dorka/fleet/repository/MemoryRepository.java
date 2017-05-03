@@ -67,14 +67,7 @@ public class MemoryRepository implements Repository {
 
     @Override
     public List<Car> getCarsByCoord(Coordinate coord, float radius) {
-        List<Car> ret=new ArrayList<>();
-        for(int i=0;i<cars.size();i++){
-            if(cars.get(i).getLocation().getLatitude()<=coord.getLatitude()+radius && cars.get(i).getLocation().getLatitude()>=coord.getLatitude()-radius &&
-                    cars.get(i).getLocation().getLongitude()<=coord.getLongitude()+radius && cars.get(i).getLocation().getLongitude()>=coord.getLongitude()-radius){
-                ret.add(cars.get(i));
-            }
-        }
-        return ret;
+        return getAllCars();
     }
 
     @Override

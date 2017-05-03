@@ -48,7 +48,7 @@ public interface CarApi {
 
   @GET("cars/command/{carId}")
   Call<Void> carsCarIdCommandGet(
-    @Query("command") String command, @Path("carId") int carId
+          @Path("carId") int carId,@Query("command") String command
   );
 
 
