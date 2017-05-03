@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "fleet.dork.btb.hu.fleet"
+        applicationId "hu.btb.dorka.fleet"
         minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
