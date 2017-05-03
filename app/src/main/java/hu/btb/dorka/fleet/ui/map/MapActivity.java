@@ -102,7 +102,13 @@ public class MapActivity extends AppCompatActivity implements MapScreen {
         mapPresenter.detachScreen();
     }
 
+    private int counter = 20;
+
     private void refresh() {
+        if (counter++ < 20) {
+            return;
+        }
+        counter = 0;
         CameraPosition cp = mMap.getCameraPosition();
         mapPresenter.refreshMap(new Coordinate((float) (cp.target.latitude), (float) (cp.target.longitude)), cp.zoom * 10);
 

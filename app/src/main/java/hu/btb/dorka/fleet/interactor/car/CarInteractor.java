@@ -13,6 +13,7 @@ import hu.btb.dorka.fleet.model.Car;
 import hu.btb.dorka.fleet.model.Command;
 import hu.btb.dorka.fleet.network.api.CarApi;
 import hu.btb.dorka.fleet.repository.Repository;
+import hu.btb.dorka.fleet.util.analytics.Analytics;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -48,6 +49,7 @@ public class CarInteractor {
             List<Car> cars =response.body();
             repo.updateCars(cars);
             //List<Car> cars= repo.getAllCars();
+            Analytics.event("Loading cars");
             event.setCars(cars);
             bus.post(event);
         } catch (Exception e) {
@@ -62,6 +64,7 @@ public class CarInteractor {
         try{
             Car c=repo.getCar(id);
             event.setCar(c);
+            Analytics.event("Loading car ", "car=" + id);
             bus.post(event);
         }catch (Exception e){
             event.setThrowable(e);
@@ -80,6 +83,7 @@ public class CarInteractor {
             Car c=response.body();
             repo.saveCar(c);
             event.setCar(c);
+            Analytics.event("Refreshing car ", "car=" + c.getCarId());
             bus.post(event);
         }catch (Exception e){
             event.setThrowable(e);
@@ -93,6 +97,7 @@ public class CarInteractor {
         try{
             Response<Void> response=call.execute();
             event.setResponse(response.code());
+            Analytics.event("Send command");
             bus.post(event);
         }catch(Exception e){
             event.setThrowable(e);

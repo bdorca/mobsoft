@@ -10,6 +10,7 @@ import hu.btb.dorka.fleet.network.api.AuthApi;
 import hu.btb.dorka.fleet.network.model.Credential;
 import hu.btb.dorka.fleet.network.model.Token;
 import hu.btb.dorka.fleet.settings.Settings;
+import hu.btb.dorka.fleet.util.analytics.Analytics;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -44,6 +45,7 @@ public class AuthInteractor {
             }
             Token token=response.body();
             event.setCode(response.code());
+            Analytics.event("Logged in!");
             saveSession(token);
             bus.post(event);
         } catch (Exception e) {

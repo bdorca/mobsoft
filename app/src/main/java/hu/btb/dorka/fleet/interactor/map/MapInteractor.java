@@ -10,6 +10,7 @@ import hu.btb.dorka.fleet.model.Car;
 import hu.btb.dorka.fleet.model.Coordinate;
 import hu.btb.dorka.fleet.network.api.CarApi;
 import hu.btb.dorka.fleet.repository.Repository;
+import hu.btb.dorka.fleet.util.analytics.Analytics;
 
 import static hu.btb.dorka.fleet.FleetApplication.injector;
 
@@ -38,6 +39,7 @@ public class MapInteractor {
         try{
             List<Car> cars=repo.getCarsByCoord(coordinate, radius);
             event.setCars(cars);
+            Analytics.event("Refreshing map");
             bus.post(event);
         }catch (Exception e){
             event.setThrowable(e);

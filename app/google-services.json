@@ -1,0 +1,125 @@
+{
+  "project_info": {
+    "project_number": "953281852430",
+    "project_id": "myfleet-1365"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953281852430:android:b7752b982559044b",
+        "android_client_info": {
+          "package_name": "hu.btb.dorka.fleet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPreX75maRaL1e02zfZ9rmDq3SIAp5FcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-64923448-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953281852430:android:0355cb59749dde89",
+        "android_client_info": {
+          "package_name": "hu.btb.dorka.fleet.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPreX75maRaL1e02zfZ9rmDq3SIAp5FcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-64923448-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953281852430:android:bdac59684032e92b",
+        "android_client_info": {
+          "package_name": "hu.btb.dorka.fleet.mock"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPreX75maRaL1e02zfZ9rmDq3SIAp5FcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-64923448-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953281852430:android:359364d4b92d4ab3",
+        "android_client_info": {
+          "package_name": "hu.btb.dorka.fleet.mock.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPreX75maRaL1e02zfZ9rmDq3SIAp5FcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-64923448-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
