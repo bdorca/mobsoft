@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 
-public class Login   {
+public class Credential {
   
   @SerializedName("username")
   private String username = null;
@@ -15,7 +15,7 @@ public class Login   {
   @SerializedName("password")
   private String password = null;
 
-    public Login(String username, String password) {
+    public Credential(String username, String password) {
         this.username=username;
         this.password=password;
     }
@@ -50,9 +50,9 @@ public class Login   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Login login = (Login) o;
-    return Objects.equals(username, login.username) &&
-        Objects.equals(password, login.password);
+    Credential credential = (Credential) o;
+    return Objects.equals(username, credential.username) &&
+        Objects.equals(password, credential.password);
   }
 
   @Override

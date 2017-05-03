@@ -1,4 +1,4 @@
-package fleet.dork.btb.hu.fleet.utils;
+package fleet.dork.btb.hu.fleet.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
