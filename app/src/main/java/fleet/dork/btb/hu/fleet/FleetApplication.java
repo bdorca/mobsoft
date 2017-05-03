@@ -2,11 +2,23 @@ package fleet.dork.btb.hu.fleet;
 
 import android.app.Application;
 
+import javax.inject.Inject;
+
+import fleet.dork.btb.hu.fleet.repository.Repository;
 import fleet.dork.btb.hu.fleet.ui.UIModule;
 
 public class FleetApplication extends Application {
 
 	public static FleetApplicationComponent injector;
+
+	@Inject
+	Repository repository;
+
+    public void setInjector(FleetApplicationComponent appComponent) {
+        injector = appComponent;
+        injector.inject(this);
+        repository.open(getApplicationContext());
+    }
 
 	@Override
 	public void onCreate() {
@@ -17,5 +29,6 @@ public class FleetApplication extends Application {
 						uIModule(
 								new UIModule(this)
 						).build();
+		repository.open(getApplicationContext());
 	}
 }

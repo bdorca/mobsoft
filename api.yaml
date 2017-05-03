@@ -1,0 +1,155 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.0.0"
+  title: Fleet
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /cars:
+    # This is a HTTP operation
+    get:
+      tags: [Car]
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets `Car` objects.
+        Optional query param of **size** determines
+        size of returned array
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: size
+          in: query
+          description: Size of array
+          required: false
+          type: number
+          format: double
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Car'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /cars/{carId}:
+    get:
+      tags: [Car]
+      parameters:
+        - name: carId
+          in: path
+          description: ID of car
+          required: true
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: car response
+          schema:
+            $ref: '#/definitions/Car'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /cars/command/{carId}:
+    get:
+      tags: [Car]
+      parameters:
+        - name: command
+          in: query
+          required: true
+          type: string
+        - name: carId
+          in: path
+          required: true
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: Command sent.
+        403:
+          description: Not Authorized.
+  /login:
+    post:
+      tags: [Login]
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - text/xml
+        - text/html
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Login"
+      responses:
+        200:
+          description: Logged in.
+        403:
+          description: Not logged in.
+
+definitions:
+  Car:
+    type: object
+    properties:
+      carId:
+        type: integer
+        format: int32
+      licence:
+        type: string
+        description: Plate.
+      type:
+        type: string
+        description: Car type.
+      gas_status:
+        type: integer
+        format: int32
+        description: percent
+      status:
+        type: string
+        enum: [stopped, running, turned_off]
+      location:
+        $ref: "#/definitions/Coordinate"
+  Coordinate:
+    type: object
+    properties:
+      latitude:
+        type: number
+        format: float
+        description: latitude
+      longitude:
+        type: number
+        format: float
+        description: longitude
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+  Login:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string

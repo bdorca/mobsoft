@@ -10,4 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fleet.dork.btb.hu.fleet.ui.map.MapActivity">
 
+    <com.google.android.gms.maps.MapFragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/mapFragment"/>
 </RelativeLayout>

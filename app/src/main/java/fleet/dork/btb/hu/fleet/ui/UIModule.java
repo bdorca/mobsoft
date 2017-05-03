@@ -2,10 +2,14 @@ package fleet.dork.btb.hu.fleet.ui;
 
 import android.content.Context;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.greenrobot.event.EventBus;
 import fleet.dork.btb.hu.fleet.ui.carlist.CarListPresenter;
 import fleet.dork.btb.hu.fleet.ui.details.DetailsPresenter;
 import fleet.dork.btb.hu.fleet.ui.login.LoginPresenter;
@@ -47,6 +51,18 @@ public class UIModule {
     @Singleton
     public MapPresenter provideMapPresenter(){
         return new MapPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    public Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 
 }
