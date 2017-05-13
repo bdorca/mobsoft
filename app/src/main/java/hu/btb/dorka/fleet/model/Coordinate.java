@@ -14,13 +14,13 @@ import java.util.Objects;
 @Parcel
 public class Coordinate   {
 
-    private Long id;
+    protected Long id;
 
     @SerializedName("latitude")
-    private float latitude = 0;
+    protected float latitude = 0;
 
     @SerializedName("longitude")
-    private float longitude = 0;
+    protected float longitude = 0;
 
     public Coordinate() {
     }

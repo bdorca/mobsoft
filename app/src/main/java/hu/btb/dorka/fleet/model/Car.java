@@ -11,7 +11,7 @@ import java.util.Objects;
 @Table
 public class Car   {
 
-    private Long id;
+    protected Long id;
 
     public Car(Long id, int carId, String licence, String type, Coordinate location, int gasStatus, StatusEnum status) {
         this.id = id;
@@ -27,16 +27,16 @@ public class Car   {
     }
 
     @SerializedName("carId")
-    private int carId = 0;
+    protected int carId = 0;
 
     @SerializedName("licence")
-    private String licence = null;
+    protected String licence = null;
 
     @SerializedName("type")
-    private String type = null;
+    protected String type = null;
 
     @SerializedName("gas_status")
-    private int gasStatus = 0;
+    protected int gasStatus = 0;
 
 
 
@@ -50,7 +50,7 @@ public class Car   {
         @SerializedName("turned_off")
         TURNED_OFF("turned_off");
 
-        private String value;
+        protected String value;
 
         StatusEnum(String value) {
             this.value = value;
@@ -63,10 +63,10 @@ public class Car   {
     }
 
     @SerializedName("statusImageView")
-    private StatusEnum status = null;
+    protected StatusEnum status = null;
 
     @SerializedName("location")
-    private Coordinate location = null;
+    protected Coordinate location = null;
 
 
 
