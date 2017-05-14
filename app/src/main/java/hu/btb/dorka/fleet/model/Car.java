@@ -11,6 +11,7 @@ import java.util.Objects;
 @Table
 public class Car   {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private Long id;
 
     public Car(Long id, int carId, String licence, String type, Coordinate location, int gasStatus, StatusEnum status) {

@@ -17,4 +17,6 @@
     <string name="title_activity_details">DetailsActivity</string>
     <string name="gas_status">Gas Status</string>
     <string name="google_maps_key">AIzaSyBdg-QeIh7gZjj5evg0dImhVoR4Kgm8_jY</string>
+    <string name="plate">Plate</string>
+    <string name="type">Type</string>
 </resources>

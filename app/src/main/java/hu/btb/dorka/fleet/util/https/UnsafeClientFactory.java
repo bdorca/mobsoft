@@ -1,6 +1,8 @@
 package hu.btb.dorka.fleet.util.https;
 
 
+import android.annotation.SuppressLint;
+
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
@@ -39,7 +41,8 @@ public class UnsafeClientFactory {
 		final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
 		return new OkHttpClient.Builder().sslSocketFactory(sslSocketFactory).hostnameVerifier(new HostnameVerifier() {
-			@Override
+			@SuppressLint("BadHostnameVerifier")
+            @Override
 			public boolean verify(String hostname, SSLSession session) {
 				return true;
 			}

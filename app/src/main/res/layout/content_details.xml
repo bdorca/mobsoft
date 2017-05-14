@@ -14,7 +14,7 @@
     tools:showIn="@layout/activity_details">
 
     <TextView
-        android:text="Plate"
+        android:text="@string/plate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large"/>
 
     <TextView
-        android:text="Type"
+        android:text="@string/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/plateTextView"

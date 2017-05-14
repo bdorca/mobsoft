@@ -27,7 +27,6 @@ public class GoogleAnalyticsAdapter implements AnalyticsAdapter {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(context);
             mTracker = analytics.newTracker(R.xml.global_tracker);
             analytics.setLocalDispatchPeriod(10); // In seconds, default 1800
-            analytics.getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
             analytics.enableAutoActivityReports((Application) context);
             mTracker.enableAutoActivityTracking(true);
             mTracker.enableExceptionReporting(true);

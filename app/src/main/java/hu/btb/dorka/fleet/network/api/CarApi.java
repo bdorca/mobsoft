@@ -15,7 +15,7 @@ public interface CarApi {
    * 
    * Gets `Car` objects.\nOptional query param of **size** determines\nsize of returned array
    * @param size Size of array
-   * @return Call<List<Car>>
+   * @return Call\<List\<Car>>
    */
   
   @GET("cars")
@@ -41,9 +41,9 @@ public interface CarApi {
   /**
    *
    *
-   * @param command
-   * @param carId
-   * @return Call<Void>
+   * @param command command
+   * @param carId carId
+   * @return Call<Void> call
    */
 
   @GET("cars/command/{carId}")
